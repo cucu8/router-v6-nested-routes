@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import AcilisResim from "./Pages/AcilisResim";
+import BoilerScreen from "./Pages/BoilerScreen";
+import ForecastOpt from "./Pages/ForecastOpt";
+import LoginPage from "./Pages/LoginPage";
+import MainPage from "./Pages/Main";
+import PowerBiEgt from "./Pages/PowerBiEgt";
+import RadiatorScreen from "./Pages/RadiatorScreen";
+import UygulamaEgt from "./Pages/UygulamaEgt";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<AcilisResim />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/main" element={<MainPage />}>
+          <Route path="forecastOpt" element={<ForecastOpt />}>
+            <Route path="radiatorScreen" element={<RadiatorScreen />} />
+            <Route path="boilerScreen" element={<BoilerScreen />} />
+          </Route>
+          <Route path="egitim/power-bi-egitimi" element={<PowerBiEgt />} />
+          <Route path="egitim/uygulama-egitimi" element={<UygulamaEgt />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
